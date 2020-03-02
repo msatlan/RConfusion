@@ -22,6 +22,7 @@ class App extends Component {
             <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
           </div>
         </Navbar>
+        {/* when state is passed to child component, in child component it's used as props */}
         <Menu dishes={this.state.dishes}/>
       </div>
     );
