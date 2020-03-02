@@ -4,6 +4,7 @@ import { Card,
     CardText, 
     CardBody, 
     CardTitle } from 'reactstrap';
+import moment from 'moment';
 
 class DishDetail extends Component {
 
@@ -33,14 +34,10 @@ class DishDetail extends Component {
         if(comments != null) {
             const comm = comments.map(e => {
                 return(
-                    <div key={e.id}>
-                        <div>
-                            {e.comment}
-                        </div>
-                        <div>
-                            -- {e.author}, {e.date}
-                        </div>
-                    </div>
+                    <ul className="list-unstyled">
+                        <li>{e.comment}</li>
+                        <li>-- {e.author}, {moment(e.date).format('MMMM DD, YYYY')}</li>
+                    </ul>
                 );
             });
 
