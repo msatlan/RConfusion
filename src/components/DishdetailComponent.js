@@ -32,14 +32,16 @@ class DishDetail extends Component {
 
     renderComments(comments){
         if(comments != null) {
-            const comm = comments.map(e => {
-                return(
+            const comm = comments.map(e => 
+                 <div key={e.id}>
                     <ul className="list-unstyled">
-                        <li>{e.comment}</li>
-                        <li>-- {e.author}, {moment(e.date).format('MMMM DD, YYYY')}</li>
+                        <li >
+                            {e.comment}
+                            -- {e.author}, {moment(e.date).format('MMMM DD, YYYY')}
+                        </li>
                     </ul>
-                );
-            });
+                 </div>    
+            );
 
             return (
                 <div>
