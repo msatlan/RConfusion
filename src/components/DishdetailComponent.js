@@ -7,7 +7,6 @@ import { Card,
 import moment from 'moment';
 
 class DishDetail extends Component {
-
     renderDish(dish){
         if (dish != null) {
             return (
