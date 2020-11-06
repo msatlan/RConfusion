@@ -3,14 +3,6 @@ import { Card, CardImg, CardText, CardBody, CardTitle } from "reactstrap";
 import moment from "moment";
 
 class DishDetail extends Component {
-  componentDidMount() {
-    console.log("DishDetail - componentDidMount invoked");
-  }
-
-  componentDidUpdate() {
-    console.log("DishDetail - componentDidUpdate invoked");
-  }
-
   renderDish(dish) {
     if (dish != null) {
       return (
