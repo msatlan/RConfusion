@@ -4,6 +4,8 @@ import Footer from "./FooterComponent";
 import Menu from "./Menu";
 import DishDetail from "./DishdetailComponent";
 import { Dishes } from "../common/dishes";
+import Home from "./HomeComponent";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 class Main extends Component {
   constructor(props) {
@@ -11,32 +13,27 @@ class Main extends Component {
 
     this.state = {
       dishes: Dishes,
-      selectedDish: null,
     };
   }
 
-  onDishSelect(dishId) {
-    this.setState({
-      selectedDish: dishId,
-    });
-  }
-
   render() {
+    const HomePage = () => {
+      return <Home />;
+    };
+
     return (
       <div>
         {/* when state is passed to child component, in child component it's used as props */}
         <Header />
-        <Menu
-          dishes={this.state.dishes}
-          onClick={(dishId) => this.onDishSelect(dishId)}
-        />
-        <DishDetail
-          selectedDish={
-            this.state.dishes.filter(
-              (dish) => dish.id === this.state.selectedDish
-            )[0]
-          }
-        />
+        <Switch>
+          <Route path="/home" component={HomePage} />
+          <Route
+            exact
+            path="/menu"
+            component={() => <Menu dishes={this.state.dishes} />}
+          />
+          <Redirect to="home" />
+        </Switch>
         <Footer />
       </div>
     );
