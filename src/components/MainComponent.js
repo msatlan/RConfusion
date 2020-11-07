@@ -36,6 +36,21 @@ class Main extends Component {
       );
     };
 
+    const DishWithId = ({ match }) => {
+      return (
+        <DishDetail
+          selectedDish={
+            this.state.dishes.filter(
+              (d) => d.id === parseInt(match.params.dishId)
+            )[0]
+          }
+          comments={this.state.comments.filter(
+            (c) => c.dishId === parseInt(match.params.dishId)
+          )}
+        />
+      );
+    };
+
     return (
       <div>
         {/* when state is passed to child component, in child component it's used as props */}
@@ -47,6 +62,7 @@ class Main extends Component {
             path="/menu"
             component={() => <Menu dishes={this.state.dishes} />}
           />
+          <Route path="/menu/:dishId" component={DishWithId} />
           <Route exact path="/contactus" component={Contact} />
           <Redirect to="home" />
         </Switch>

@@ -1,6 +1,15 @@
 import React from "react";
-import { Card, CardImg, CardText, CardBody, CardTitle } from "reactstrap";
+import {
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
+  Breadcrumb,
+  BreadcrumbItem,
+} from "reactstrap";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 function RenderDish({ dish }) {
   if (dish != null) {
@@ -44,19 +53,32 @@ function RenderComments({ comments }) {
   }
 }
 
-const DishDetail = ({ selectedDish }) => {
-  return (
-    <div className="container">
-      <div className="row">
-        <div className="col-12 col-md-5 m-1">
-          <RenderDish dish={selectedDish} />
-        </div>
-        <div className="col-12 col-md-5 m-1">
-          {selectedDish && <RenderComments comments={selectedDish.comments} />}
+const DishDetail = (props) => {
+  if (props.selectedDish != null) {
+    return (
+      <div className="container">
+        <div className="row">
+          <Breadcrumb>
+            <BreadcrumbItem>
+              <Link to="/menu">Menu</Link>
+            </BreadcrumbItem>
+            <BreadcrumbItem active>{props.selectedDish.name}</BreadcrumbItem>
+          </Breadcrumb>
+          <div className="col-12">
+            <h3>{props.selectedDish.name}</h3>
+          </div>
+          <div className="col-12 col-md-5 m-1">
+            <RenderDish dish={props.selectedDish} />
+          </div>
+          <div className="col-12 col-md-5 m-1">
+            <RenderComments comments={props.comments} />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return <div></div>;
+  }
 };
 
 export default DishDetail;
