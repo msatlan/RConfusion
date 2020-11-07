@@ -22,7 +22,7 @@ function RenderMenuItem({ dish }) {
   );
 }
 
-const Menu = ({ dishes, onClick }) => {
+const Menu = ({ dishes }) => {
   // passed from parent component's state - used as props in this component
   const menu = dishes.map((dish) => {
     return (
