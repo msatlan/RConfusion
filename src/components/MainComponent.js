@@ -5,6 +5,9 @@ import Menu from "./Menu";
 import Contact from "./ContactComponent";
 import DishDetail from "./DishdetailComponent";
 import { Dishes } from "../common/dishes";
+import { Comments } from "../common/comments";
+import { Leaders } from "../common/leaders";
+import { Promotions } from "../common/promotions";
 import Home from "./HomeComponent";
 import { Switch, Route, Redirect } from "react-router-dom";
 
@@ -14,12 +17,23 @@ class Main extends Component {
 
     this.state = {
       dishes: Dishes,
+      comments: Comments,
+      promotions: Promotions,
+      leaders: Leaders,
     };
   }
 
   render() {
     const HomePage = () => {
-      return <Home />;
+      return (
+        <Home
+          dish={this.state.dishes.filter((dish) => dish.featured)[0]}
+          promotion={
+            this.state.promotions.filter((promotion) => promotion.featured)[0]
+          }
+          leader={this.state.leaders.filter((leader) => leader.featured)[0]}
+        />
+      );
     };
 
     return (
