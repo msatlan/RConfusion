@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -9,21 +9,21 @@ import {
   Input,
   Col,
   FormFeedback,
-} from "reactstrap";
-import { Link } from "react-router-dom";
+} from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 class Contact extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      firstName: "",
-      lastName: "",
-      telnum: "",
-      email: "",
+      firstName: '',
+      lastName: '',
+      telnum: '',
+      email: '',
       agree: false,
-      contactType: "Tel",
-      message: "",
+      contactType: 'Tel',
+      message: '',
       touched: {
         firstName: false,
         lastName: false,
@@ -45,32 +45,32 @@ class Contact extends Component {
 
   validate(firstName, lastName, telnum, email) {
     const errors = {
-      firstName: "",
-      lastName: "",
-      telnum: "",
-      email: "",
+      firstName: '',
+      lastName: '',
+      telnum: '',
+      email: '',
     };
 
     if (this.state.touched.firstName && firstName.length < 3) {
-      errors.firstName = "First name should be >= 3 chars";
+      errors.firstName = 'First name should be >= 3 chars';
     } else if (this.state.touched.firstName && firstName.length > 10) {
-      errors.firstName = "First name should be <= 10 chars";
+      errors.firstName = 'First name should be <= 10 chars';
     }
 
     if (this.state.touched.lastName && lastName.length < 3) {
-      errors.lastName = "Last name should be >= 3 chars";
+      errors.lastName = 'Last name should be >= 3 chars';
     } else if (this.state.touched.lastName && lastName.length > 10) {
-      errors.lastName = "Last name should be <= 10 chars";
+      errors.lastName = 'Last name should be <= 10 chars';
     }
 
     const regExp = /^\d+$/;
     if (this.state.touched.telnum && !regExp.test(telnum)) {
-      errors.telnum = "Tel number should contain only numbers";
+      errors.telnum = 'Tel number should contain only numbers';
     }
 
     if (
       this.state.touched.email &&
-      email.split("").filter((x) => x === "@").length !== 1
+      email.split('').filter((x) => x === '@').length !== 1
     ) {
       errors.email = "Email should contain a '@' sign";
     }
@@ -80,7 +80,7 @@ class Contact extends Component {
 
   handleInputChange(event) {
     const target = event.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
 
     this.setState({
@@ -89,8 +89,8 @@ class Contact extends Component {
   }
 
   handleSubmit(event) {
-    console.log("Form submitted - state" + JSON.stringify(this.state));
-    alert("Form submitted - state" + JSON.stringify(this.state));
+    console.log('Form submitted - state' + JSON.stringify(this.state));
+    alert('Form submitted - state' + JSON.stringify(this.state));
     event.preventDefault();
   }
 
@@ -129,7 +129,7 @@ class Contact extends Component {
               <br />
               <i className="fa fa-fax"></i>: +852 8765 4321
               <br />
-              <i className="fa fa-envelope"></i>:{" "}
+              <i className="fa fa-envelope"></i>:{' '}
               <a href="mailto:confusion@food.net">confusion@food.net</a>
             </address>
           </div>
@@ -176,9 +176,9 @@ class Contact extends Component {
                     placeholder="First Name"
                     value={this.state.firstName}
                     onChange={this.handleInputChange}
-                    onBlur={this.handleBlur("firstName")}
-                    valid={errors.firstName === ""}
-                    invalid={errors.firstName !== ""}
+                    onBlur={this.handleBlur('firstName')}
+                    valid={errors.firstName === ''}
+                    invalid={errors.firstName !== ''}
                   ></Input>
                   <FormFeedback>{errors.firstName}</FormFeedback>
                 </Col>
@@ -195,9 +195,9 @@ class Contact extends Component {
                     placeholder="Last Name"
                     value={this.state.lastName}
                     onChange={this.handleInputChange}
-                    onBlur={this.handleBlur("lastName")}
-                    valid={errors.lastName === ""}
-                    invalid={errors.lastName !== ""}
+                    onBlur={this.handleBlur('lastName')}
+                    valid={errors.lastName === ''}
+                    invalid={errors.lastName !== ''}
                   ></Input>
                   <FormFeedback>{errors.lastName}</FormFeedback>
                 </Col>
@@ -214,9 +214,9 @@ class Contact extends Component {
                     placeholder="Tel. Number"
                     value={this.state.telnum}
                     onChange={this.handleInputChange}
-                    onBlur={this.handleBlur("telnum")}
-                    valid={errors.telnum === ""}
-                    invalid={errors.telnum !== ""}
+                    onBlur={this.handleBlur('telnum')}
+                    valid={errors.telnum === ''}
+                    invalid={errors.telnum !== ''}
                   ></Input>
                   <FormFeedback>{errors.telnum}</FormFeedback>
                 </Col>
@@ -233,9 +233,9 @@ class Contact extends Component {
                     placeholder="Email"
                     value={this.state.email}
                     onChange={this.handleInputChange}
-                    onBlur={this.handleBlur("email")}
-                    valid={errors.email === ""}
-                    invalid={errors.email !== ""}
+                    onBlur={this.handleBlur('email')}
+                    valid={errors.email === ''}
+                    invalid={errors.email !== ''}
                   ></Input>
                   <FormFeedback>{errors.email}</FormFeedback>
                 </Col>
@@ -249,7 +249,7 @@ class Contact extends Component {
                         name="agree"
                         checked={this.state.agree}
                         onChange={this.handleInputChange}
-                      ></Input>{" "}
+                      ></Input>{' '}
                       <strong>May we contact you?</strong>
                     </Label>
                   </FormGroup>
