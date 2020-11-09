@@ -53,7 +53,6 @@ class Main extends Component {
 
     return (
       <div>
-        {/* when state is passed to child component, in child component it's used as props */}
         <Header />
         <Switch>
           <Route path="/home" component={HomePage} />
