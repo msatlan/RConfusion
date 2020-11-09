@@ -27,9 +27,12 @@ function RenderLeader({ leader }) {
 }
 
 function About(props) {
-  const leaders = props.leaders.map((leader) => {
-    return <RenderLeader leader={leader} />;
-  });
+  let leaders;
+  if (props.leaders != null && props.leaders.length > 0) {
+    leaders = props.leaders.map((leader) => {
+      return <RenderLeader leader={leader} />;
+    });
+  }
 
   return (
     <div className="container">
