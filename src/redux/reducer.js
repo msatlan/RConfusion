@@ -10,6 +10,8 @@ export const initialState = {
   leaders: Leaders,
 };
 
+// Reducer function - used to modifiy the app's state
+// takes the curent state and action as params and generates the next state
 export const Reducer = (state = initialState, action) => {
   return state;
 };
