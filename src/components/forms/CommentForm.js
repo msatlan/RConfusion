@@ -102,7 +102,7 @@ class CommentForm extends Component {
                                         className="form-control"
                                         validators={{
                                             required,
-                                            minLength: minLength(2),
+                                            minLength: minLength(3),
                                             maxLength: maxLength(15),
                                         }}
                                     />
@@ -113,7 +113,7 @@ class CommentForm extends Component {
                                         messages={{
                                             required: 'Required',
                                             minLength:
-                                                'Must be greater than 2 characters',
+                                                'Must be greater than 3 characters',
                                             maxLength:
                                                 'Must be 15 chacters or less',
                                         }}
