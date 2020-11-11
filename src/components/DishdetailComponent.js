@@ -47,13 +47,13 @@ function RenderComments({ comments }) {
             <div>
                 <h4>Comments</h4>
                 {comm}
-                <CommentForm></CommentForm>
+                <CommentForm />
             </div>
         );
     } else {
         return (
             <div>
-                <CommentForm></CommentForm>
+                <CommentForm />
             </div>
         );
     }
