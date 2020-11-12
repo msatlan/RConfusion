@@ -1,4 +1,3 @@
-import { actions } from 'react-redux-form';
 import { COMMENTS } from '../../common/comments';
 import * as ActionTypes from '../ActionTypes';
 
