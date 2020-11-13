@@ -19,6 +19,7 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { Control, Errors, LocalForm } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
+import { baseUrl } from '../common/BaseUrl';
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length <= len;
@@ -165,9 +166,13 @@ function RenderDish({ dish }) {
         return (
             <div>
                 <Card>
-                    <CardImg width="100%" src={dish.image} alt={dish.name} />
+                    <CardImg
+                        width="100%"
+                        src={baseUrl + dish.image}
+                        alt={dish.name}
+                    />
                     <CardBody>
-                        <CardTitle heading>{dish.name}</CardTitle>
+                        <CardTitle heading="true">{dish.name}</CardTitle>
                         <CardText>{dish.description}</CardText>
                     </CardBody>
                 </Card>
