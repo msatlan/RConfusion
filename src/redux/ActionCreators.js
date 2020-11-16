@@ -138,25 +138,20 @@ export const addPromos = (promos) => ({
 
 export const fetchPromos = () => (dispatch) => {
     dispatch(promosLoading(true));
-    debugger;
     return fetch(baseUrl + 'promotions')
         .then(
             (response) => {
-                debugger;
                 if (response.ok) {
                     return response;
                 } else {
-                    debugger;
                     let error = new Error(
                         'Error ' + response.status + ': ' + response.statusText
                     );
                     error.response = response;
-                    debugger;
                     throw error;
                 }
             },
             (error) => {
-                debugger
                 let err = new Error(error.message);
                 throw err;
             }
