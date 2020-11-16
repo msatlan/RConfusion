@@ -10,11 +10,30 @@ export const Leaders = (
 ) => {
     switch (action.type) {
         case ActionTypes.ADD_LEADERS:
-            return { ...state, isLoading: false, leaders: action.payload };
+            return {
+                ...state,
+                isLoading: false,
+                err: null,
+                leaders: action.payload,
+            };
+
         case ActionTypes.LEADERS_LOADING:
-            return { ...state, isLoading: true, leaders: [] };
+            return {
+                ...state,
+                isLoading: true,
+                err: null,
+                leaders: [],
+                err: null,
+            };
+
         case ActionTypes.LEADERS_FAILED:
-            return { ...state, isLoading: false, leaders: [] };
+            return {
+                ...state,
+                isLoading: false,
+                err: action.payload,
+                leaders: [],
+            };
+
         default:
             return state;
     }

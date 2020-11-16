@@ -9,13 +9,19 @@ import {
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { baseUrl } from '../common/BaseUrl';
+import { Loading } from './LoadingComponent';
+import { Fade, Stagger } from 'react-animation-components';
 
 function RenderLeader({ leader }) {
     return (
         <div key={leader.id} className="col-12 mt-5">
             <Media tag="li">
                 <Media left middle>
-                    <Media object src={baseUrl + leader.image} alt={leader.name} />
+                    <Media
+                        object
+                        src={baseUrl + leader.image}
+                        alt={leader.name}
+                    />
                 </Media>
                 <Media body className="ml-5">
                     <Media heading="true">{leader.name}</Media>
@@ -27,12 +33,27 @@ function RenderLeader({ leader }) {
     );
 }
 
+function RenderLeaders(leaders) {
+    return (
+        <Stagger in>
+            {
+                leaders.map(leader => {
+                    return (
+                        <Fade in>
+                            <RenderLeader leader={leader}/>
+                        </Fade>
+                    )
+                })
+            }
+        </Stagger>
+    )
+}
+
 function About(props) {
+    debugger
     let leaders;
     if (props.leaders.leaders != null && props.leaders.leaders.length > 0) {
-        leaders = props.leaders.leaders.map((leader) => {
-            return <RenderLeader leader={leader} />;
-        });
+        leaders = RenderLeaders(props.leaders.leaders);
     }
 
     return (
@@ -113,7 +134,17 @@ function About(props) {
                     <h2>Corporate Leadership</h2>
                 </div>
                 <div className="col-12">
-                    <Media list>{leaders}</Media>
+                    {props.leaders.err ? (
+                        <div className="container">
+                            <div className="row">
+                                <h4>{props.leaders.err}</h4>
+                            </div>
+                        </div>
+                    ) : props.leaders.isLoading ? (
+                        <Loading />
+                    ) : (
+                        <Media list>{leaders}</Media>
+                    )}
                 </div>
             </div>
         </div>

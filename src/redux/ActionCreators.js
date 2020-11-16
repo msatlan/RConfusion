@@ -122,32 +122,6 @@ export const addComments = (comments) => ({
     payload: comments,
 });
 
-export const fetchPromos = () => (dispatch) => {
-    dispatch(promosLoading(true));
-
-    return fetch(baseUrl + 'promotions')
-        .then(
-            (response) => {
-                if (response.ok) {
-                    return response;
-                } else {
-                    let error = new Error(
-                        'Error ' + response.status + ': ' + response.statusText
-                    );
-                    error.response = response;
-                    throw error;
-                }
-            },
-            (error) => {
-                let err = new Error(error.message);
-                throw err;
-            }
-        )
-        .then((response) => response.json())
-        .then((promos) => dispatch(addPromos(promos)))
-        .catch((error) => dispatch(promosFailed(error.message)));
-};
-
 export const promosLoading = () => ({
     type: ActionTypes.PROMOS_LOADING,
 });
@@ -161,6 +135,36 @@ export const addPromos = (promos) => ({
     type: ActionTypes.ADD_PROMOS,
     payload: promos,
 });
+
+export const fetchPromos = () => (dispatch) => {
+    dispatch(promosLoading(true));
+    debugger;
+    return fetch(baseUrl + 'promotions')
+        .then(
+            (response) => {
+                debugger;
+                if (response.ok) {
+                    return response;
+                } else {
+                    debugger;
+                    let error = new Error(
+                        'Error ' + response.status + ': ' + response.statusText
+                    );
+                    error.response = response;
+                    debugger;
+                    throw error;
+                }
+            },
+            (error) => {
+                debugger
+                let err = new Error(error.message);
+                throw err;
+            }
+        )
+        .then((response) => response.json())
+        .then((promos) => dispatch(addPromos(promos)))
+        .catch((error) => dispatch(promosFailed(error.message)));
+};
 
 export const leadersLoading = () => ({
     type: ActionTypes.LEADERS_LOADING,
@@ -200,4 +204,45 @@ export const fetchLeaders = () => (dispatch) => {
         .then((response) => response.json())
         .then((leaders) => dispatch(addLeaders(leaders)))
         .catch((error) => dispatch(leadersFailed(error.message)));
+};
+
+export const postFeedback = (feedback) => (dispatch) => {
+    const newFeedback = {
+        ...feedback,
+        date: new Date().toISOString(),
+    };
+
+    return fetch(baseUrl + 'feedback', {
+        method: 'POST',
+        body: JSON.stringify(newFeedback),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        credentials: 'same-origin',
+    })
+        .then(
+            (response) => {
+                if (response.ok) {
+                    return response;
+                } else {
+                    let error = new Error(
+                        'Error ' + response.status + ': ' + response.statusText
+                    );
+                    error.response = response;
+                    throw error;
+                }
+            },
+            (error) => {
+                let err = new Error(error.message);
+                throw err;
+            }
+        )
+        .then((response) => response.json())
+        .then((response) => {
+            alert('Thank you for your feedback! ' + JSON.stringify(response));
+        })
+        .catch((error) => {
+            console.log('Post feedback ', error.message);
+            alert('Your feedback could not be posted\nError: ' + error.message);
+        });
 };

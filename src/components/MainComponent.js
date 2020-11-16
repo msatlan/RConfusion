@@ -14,6 +14,7 @@ import {
     fetchComments,
     fetchPromos,
     fetchLeaders,
+    postFeedback,
 } from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
@@ -45,6 +46,9 @@ const mapDispatchToProps = (dispatch) => ({
     fetchLeaders: () => {
         dispatch(fetchLeaders());
     },
+    postFeedback: (feedback) => {
+        dispatch(postFeedback(feedback));
+    },
 });
 
 class Main extends Component {
@@ -61,6 +65,7 @@ class Main extends Component {
 
     render() {
         const HomePage = () => {
+            debugger
             return (
                 <Home
                     dish={
@@ -76,14 +81,14 @@ class Main extends Component {
                         )[0]
                     }
                     promosLoading={this.props.promotions.isLoading}
-                    promosErrMess={this.props.promotions.errMess}
+                    promosErrMess={this.props.promotions.err}
                     leader={
                         this.props.leaders.leaders.filter(
                             (leader) => leader.featured
                         )[0]
                     }
-                    promosLoading={this.props.leaders.isLoading}
-                    promosErrMess={this.props.leaders.errMess}
+                    leadersLoading={this.props.leaders.isLoading}
+                    leadersErrMess={this.props.leaders.err}
                 />
             );
         };
@@ -137,6 +142,7 @@ class Main extends Component {
                                         resetFeedbackForm={
                                             this.props.resetFeedbackForm
                                         }
+                                        postFeedback={this.props.postFeedback}
                                     />
                                 )}
                             />

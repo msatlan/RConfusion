@@ -8,7 +8,7 @@ import {
     Row,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Control, Errors, Form, actions } from 'react-redux-form';
+import { Control, Errors, Form } from 'react-redux-form';
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length <= len;
@@ -25,9 +25,8 @@ class Contact extends Component {
     }
 
     handleSubmit(values) {
-        console.log('Form submitted - state' + JSON.stringify(values));
-        alert('Form submitted - state' + JSON.stringify(values));
-        this.props.resetFeedbackForm();
+        this.props.postFeedback(values);
+        this.props.resetFeedbackForm()
     }
 
     render() {
@@ -100,14 +99,14 @@ class Contact extends Component {
                             onSubmit={(values) => this.handleSubmit(values)}
                         >
                             <Row className="form-group">
-                                <Label htmlFor="firstName" md={2}>
+                                <Label htmlFor="firstname" md={2}>
                                     First Name
                                 </Label>
                                 <Col md={10}>
                                     <Control.text
                                         model=".firstname"
-                                        id="firstName"
-                                        name="firstName"
+                                        id="firstname"
+                                        name="firstname"
                                         placeholder="First Name"
                                         className="form-control"
                                         validators={{
@@ -131,14 +130,14 @@ class Contact extends Component {
                                 </Col>
                             </Row>
                             <Row className="form-group">
-                                <Label htmlFor="lastName" md={2}>
+                                <Label htmlFor="lastname" md={2}>
                                     Last Name
                                 </Label>
                                 <Col md={10}>
                                     <Control.text
                                         model=".lastname"
-                                        id="lastName"
-                                        name="lastName"
+                                        id="lastname"
+                                        name="lastname"
                                         placeholder="Last Name"
                                         className="form-control"
                                         validators={{
@@ -149,7 +148,7 @@ class Contact extends Component {
                                     ></Control.text>
                                     <Errors
                                         className="text-danger"
-                                        model=".lasttname"
+                                        model=".lastname"
                                         show="touched"
                                         messages={{
                                             required: 'Required',
@@ -236,7 +235,7 @@ class Contact extends Component {
                                 </Col>
                                 <Col md={{ size: 3, offset: 1 }}>
                                     <Control.select
-                                        model=".contacttype"
+                                        model=".contactType"
                                         name="contacttype"
                                         className="form-control"
                                     >

@@ -49,7 +49,7 @@ const Menu = (props) => {
         return (
             <div className="container">
                 <div className="row">
-                    <h4>{props.err}</h4>
+                    <h4>{props.dishes.err}</h4>
                 </div>
             </div>
         );
