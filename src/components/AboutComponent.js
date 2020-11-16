@@ -36,21 +36,18 @@ function RenderLeader({ leader }) {
 function RenderLeaders(leaders) {
     return (
         <Stagger in>
-            {
-                leaders.map(leader => {
-                    return (
-                        <Fade in>
-                            <RenderLeader leader={leader}/>
-                        </Fade>
-                    )
-                })
-            }
+            {leaders.map((leader) => {
+                return (
+                    <Fade in>
+                        <RenderLeader leader={leader} />
+                    </Fade>
+                );
+            })}
         </Stagger>
-    )
+    );
 }
 
 function About(props) {
-    debugger
     let leaders;
     if (props.leaders.leaders != null && props.leaders.leaders.length > 0) {
         leaders = RenderLeaders(props.leaders.leaders);
