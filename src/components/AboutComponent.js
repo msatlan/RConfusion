@@ -8,13 +8,14 @@ import {
     Media,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { baseUrl } from '../common/BaseUrl';
 
 function RenderLeader({ leader }) {
     return (
         <div key={leader.id} className="col-12 mt-5">
             <Media tag="li">
                 <Media left middle>
-                    <Media object src={leader.image} alt={leader.name} />
+                    <Media object src={baseUrl + leader.image} alt={leader.name} />
                 </Media>
                 <Media body className="ml-5">
                     <Media heading="true">{leader.name}</Media>
@@ -28,8 +29,8 @@ function RenderLeader({ leader }) {
 
 function About(props) {
     let leaders;
-    if (props.leaders != null && props.leaders.length > 0) {
-        leaders = props.leaders.map((leader) => {
+    if (props.leaders.leaders != null && props.leaders.leaders.length > 0) {
+        leaders = props.leaders.leaders.map((leader) => {
             return <RenderLeader leader={leader} />;
         });
     }
