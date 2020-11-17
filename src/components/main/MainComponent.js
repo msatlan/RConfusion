@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Header from './HeaderComponent';
-import Footer from './FooterComponent';
-import Menu from './Menu';
-import Contact from './ContactComponent';
-import DishDetail from './DishdetailComponent';
-import About from './AboutComponent';
-import Home from './HomeComponent';
+import Header from 'components/HeaderComponent';
+import Footer from 'components/FooterComponent';
+import Menu from 'components/Menu';
+import Contact from 'components/ContactComponent';
+import DishDetail from 'components/DishdetailComponent';
+import About from 'components/AboutComponent';
+import Home from 'components/HomeComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
@@ -15,7 +15,7 @@ import {
     fetchPromos,
     fetchLeaders,
     postFeedback,
-} from '../redux/ActionCreators';
+} from 'redux/ActionCreators';
 import { actions } from 'react-redux-form';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
