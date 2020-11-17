@@ -7,7 +7,7 @@ import {
     CardTitle,
     CardSubtitle,
 } from 'reactstrap';
-import { Loading } from './LoadingComponent';
+import { Loading } from 'components';
 import { baseUrl } from '../common/BaseUrl';
 import { FadeTransform } from 'react-animation-components';
 
