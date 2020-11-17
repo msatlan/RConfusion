@@ -1,5 +1,6 @@
 import * as ActionTypes from 'redux/common';
 import { baseUrl } from 'common';
+import axios from 'axios';
 
 export const addComment = (comment) => ({
     type: ActionTypes.ADD_COMMENT,
@@ -48,30 +49,37 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
         });
 };
 
-export const fetchDishes = () => (dispatch) => {
+export const fetchDishesAsync = () => async (dispatch) => {
     dispatch(dishesLoading(true));
+    debugger;
+    // return fetch(baseUrl + 'dishes')
+    //     .then(
+    //         (response) => {
+    //             if (response.ok) {
+    //                 return response;
+    //             } else {
+    //                 let error = new Error(
+    //                     'Error ' + response.status + ': ' + response.statusText
+    //                 );
+    //                 error.response = response;
+    //                 throw error;
+    //             }
+    //         },
+    //         (error) => {
+    //             let err = new Error(error.message);
+    //             throw err;
+    //         }
+    //     )
+    //     .then((response) => response.json())
+    //     .then((dishes) => dispatch(addDishes(dishes)))
+    //     .catch((error) => dispatch(dishesFailed(error.message)));
 
-    return fetch(baseUrl + 'dishes')
-        .then(
-            (response) => {
-                if (response.ok) {
-                    return response;
-                } else {
-                    let error = new Error(
-                        'Error ' + response.status + ': ' + response.statusText
-                    );
-                    error.response = response;
-                    throw error;
-                }
-            },
-            (error) => {
-                let err = new Error(error.message);
-                throw err;
-            }
-        )
-        .then((response) => response.json())
-        .then((dishes) => dispatch(addDishes(dishes)))
-        .catch((error) => dispatch(dishesFailed(error.message)));
+    try {
+        let response = await axios.get(baseUrl + 'dishes');
+        dispatch(addDishes(response.data));
+    } catch (error) {
+        dispatch(dishesFailed(error.message));
+    }
 };
 
 export const dishesLoading = () => ({

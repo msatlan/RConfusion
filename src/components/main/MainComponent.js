@@ -5,7 +5,7 @@ import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
     postComment,
-    fetchDishes,
+    fetchDishesAsync,
     fetchComments,
     fetchPromos,
     fetchLeaders,
@@ -26,8 +26,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
     postComment: (dishId, rating, author, comment) =>
         dispatch(postComment(dishId, rating, author, comment)),
-    fetchDishes: () => {
-        dispatch(fetchDishes());
+    fetchDishesAsync: () => {
+        dispatch(fetchDishesAsync());
     },
     resetFeedbackForm: () => {
         dispatch(actions.reset('feedback'));
@@ -48,7 +48,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 class Main extends Component {
     componentDidMount() {
-        this.props.fetchDishes();
+        this.props.fetchDishesAsync();
         this.props.fetchComments();
         this.props.fetchPromos();
         this.props.fetchLeaders();
