@@ -9,7 +9,7 @@ import {
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Loading } from 'components';
-import { baseUrl } from '../common/BaseUrl';
+import { baseUrl } from 'common';
 
 function RenderMenuItem({ dish }) {
     return (

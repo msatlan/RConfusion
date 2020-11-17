@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { Header, Footer } from 'components';
-import Menu from 'components/Menu';
-import Contact from 'components/ContactComponent';
-import DishDetail from 'components/DishdetailComponent';
-import { About } from 'components';
-import Home from 'components/HomeComponent';
+import { Menu, Contact, DishDetail, About, Home } from 'components';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {

@@ -19,7 +19,7 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { Control, Errors, LocalForm } from 'react-redux-form';
 import { Loading } from 'components';
-import { baseUrl } from '../common/BaseUrl';
+import { baseUrl } from 'common';
 import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 const required = (val) => val && val.length;

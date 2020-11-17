@@ -8,7 +8,7 @@ import {
     CardSubtitle,
 } from 'reactstrap';
 import { Loading } from 'components';
-import { baseUrl } from '../common/BaseUrl';
+import { baseUrl } from 'common';
 import { FadeTransform } from 'react-animation-components';
 
 function RenderCard({ item, isLoading, err }) {
