@@ -10,7 +10,7 @@ import {
     fetchPromos,
     fetchLeaders,
     postFeedback,
-} from 'redux/ActionCreators';
+} from 'redux/common/ActionCreators';
 import { actions } from 'react-redux-form';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 

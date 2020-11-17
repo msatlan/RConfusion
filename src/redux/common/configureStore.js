@@ -1,12 +1,9 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { Dishes } from './reducers/dishes';
-import { Comments } from './reducers/comments';
-import { Promotions } from './reducers/promotions';
-import { Leaders } from './reducers/leaders';
+import { Dishes, Comments, Promotions, Leaders } from 'redux/reducers';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { createForms } from 'react-redux-form';
-import { InitialFeedback } from './forms/forms';
+import { InitialFeedback } from 'redux/forms';
 
 // Store holds the current state values
 // created with createStore() Redux' method

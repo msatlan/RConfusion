@@ -1,5 +1,5 @@
-import * as ActionTypes from './ActionTypes';
-import { baseUrl } from '../common/BaseUrl';
+import * as ActionTypes from 'redux/common';
+import { baseUrl } from 'common';
 
 export const addComment = (comment) => ({
     type: ActionTypes.ADD_COMMENT,
