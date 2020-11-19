@@ -6,6 +6,7 @@ import {
     CardBody,
     CardTitle,
     CardSubtitle,
+    Button,
 } from 'reactstrap';
 import { Loading } from 'components';
 import { baseUrl } from 'common';
@@ -42,29 +43,51 @@ function RenderCard({ item, isLoading, err }) {
     }
 }
 
-function Home(props) {
+function HomeTemplate(store) {
+    const { renderMessage } = store.state;
+
+    const {
+        dish,
+        dishesLoading,
+        dishesErrMess,
+        promotion,
+        promosLoading,
+        promosErrMess,
+        leader,
+        leadersLoading,
+        leadersErrMess,
+    } = store.props;
+
     return (
         <div className="container">
+            <div>{renderMessage && <div>Button clicked!!</div>}</div>
+            <div className="row">
+                <div className="col 12">
+                    <Button color="primary" onClick={store.onButtonClick}>
+                        Button
+                    </Button>
+                </div>
+            </div>
             <div className="row align-items-start">
                 <div className="col 12 col-md m-1">
                     <RenderCard
-                        item={props.dish}
-                        isLoading={props.dishesLoading}
-                        err={props.dishesErrMess}
+                        item={dish}
+                        isLoading={dishesLoading}
+                        err={dishesErrMess}
                     />
                 </div>
                 <div className="col 12 col-md m-1">
                     <RenderCard
-                        item={props.promotion}
-                        isLoading={props.promosLoading}
-                        err={props.promosErrMess}
+                        item={promotion}
+                        isLoading={promosLoading}
+                        err={promosErrMess}
                     />
                 </div>
                 <div className="col 12 col-md m-1">
                     <RenderCard
-                        item={props.leader}
-                        isLoading={props.leadersLoading}
-                        err={props.leadersErrMess}
+                        item={leader}
+                        isLoading={leadersLoading}
+                        err={leadersErrMess}
                     />
                 </div>
             </div>
@@ -72,4 +95,4 @@ function Home(props) {
     );
 }
 
-export default Home;
+export default HomeTemplate;

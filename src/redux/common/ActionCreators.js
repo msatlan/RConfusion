@@ -51,7 +51,6 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
 
 export const fetchDishesAsync = () => async (dispatch) => {
     dispatch(dishesLoading(true));
-    debugger;
     // return fetch(baseUrl + 'dishes')
     //     .then(
     //         (response) => {
