@@ -46,7 +46,10 @@ function RenderCard({ item, isLoading, err }) {
 }
 
 function Home(props) {
-    const { isMessageRendered, onButtonClick } = HomeViewStore();
+    const { isMessageRendered, 
+            onButtonClick,
+            numberOfClicks 
+    } = HomeViewStore();
 
     const {
         dish,
@@ -73,8 +76,8 @@ function Home(props) {
             <div className="row">
                 <div className="col 12">
                     <MyComponentTemplate
-                        defaultText={'default text'}
-                        text={'other text'}
+                        defaultText={`default text - ${numberOfClicks}`}
+                        text={`other text - ${numberOfClicks}`}
                     />
                 </div>
             </div>
