@@ -12,6 +12,7 @@ import { Loading } from 'components';
 import { baseUrl } from 'common';
 import { FadeTransform } from 'react-animation-components';
 import HomeViewStore from './HomeViewStore';
+import { MyComponentTemplate } from 'components/core/myComponent';
 
 function RenderCard({ item, isLoading, err }) {
     if (isLoading) {
@@ -67,6 +68,14 @@ function Home(props) {
                     <Button color="primary" onClick={onButtonClick}>
                         Button
                     </Button>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col 12">
+                    <MyComponentTemplate
+                        defaultText={'default text'}
+                        text={'other text'}
+                    />
                 </div>
             </div>
             <div className="row align-items-start">
