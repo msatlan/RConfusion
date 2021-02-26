@@ -51,27 +51,6 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
 
 export const fetchDishesAsync = () => async (dispatch) => {
     dispatch(dishesLoading(true));
-    // return fetch(baseUrl + 'dishes')
-    //     .then(
-    //         (response) => {
-    //             if (response.ok) {
-    //                 return response;
-    //             } else {
-    //                 let error = new Error(
-    //                     'Error ' + response.status + ': ' + response.statusText
-    //                 );
-    //                 error.response = response;
-    //                 throw error;
-    //             }
-    //         },
-    //         (error) => {
-    //             let err = new Error(error.message);
-    //             throw err;
-    //         }
-    //     )
-    //     .then((response) => response.json())
-    //     .then((dishes) => dispatch(addDishes(dishes)))
-    //     .catch((error) => dispatch(dishesFailed(error.message)));
 
     try {
         let response = await axios.get(baseUrl + 'dishes');
@@ -144,6 +123,7 @@ export const addPromos = (promos) => ({
 });
 
 export const fetchPromos = () => (dispatch) => {
+    debugger;
     dispatch(promosLoading(true));
     return fetch(baseUrl + 'promotions')
         .then(

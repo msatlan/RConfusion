@@ -14,45 +14,45 @@ import {
 import { actions } from 'react-redux-form';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
-const mapStateToProps = (state) => {
-    return {
-        dishes: state.dishes,
-        comments: state.comments,
-        promotions: state.promotions,
-        leaders: state.leaders,
-    };
-};
+// const mapStateToProps = (state) => {
+//     return {
+//         dishes: state.dishes,
+//         comments: state.comments,
+//         //promotions: state.promotions,
+//         leaders: state.leaders,
+//     };
+// };
 
-const mapDispatchToProps = (dispatch) => ({
-    postComment: (dishId, rating, author, comment) =>
-        dispatch(postComment(dishId, rating, author, comment)),
-    fetchDishesAsync: () => {
-        dispatch(fetchDishesAsync());
-    },
-    resetFeedbackForm: () => {
-        dispatch(actions.reset('feedback'));
-    },
-    fetchComments: () => {
-        dispatch(fetchComments());
-    },
-    fetchPromos: () => {
-        dispatch(fetchPromos());
-    },
-    fetchLeaders: () => {
-        dispatch(fetchLeaders());
-    },
-    postFeedback: (feedback) => {
-        dispatch(postFeedback(feedback));
-    },
-});
+// const mapDispatchToProps = (dispatch) => ({
+//     postComment: (dishId, rating, author, comment) =>
+//         dispatch(postComment(dishId, rating, author, comment)),
+//     fetchDishesAsync: () => {
+//         dispatch(fetchDishesAsync());
+//     },
+//     resetFeedbackForm: () => {
+//         dispatch(actions.reset('feedback'));
+//     },
+//     fetchComments: () => {
+//         dispatch(fetchComments());
+//     },
+// fetchPromos: () => {
+//     dispatch(fetchPromos());
+// },
+//     fetchLeaders: () => {
+//         dispatch(fetchLeaders());
+//     },
+//     postFeedback: (feedback) => {
+//         dispatch(postFeedback(feedback));
+//     },
+// });
 
 class Main extends Component {
-    componentDidMount() {
-        this.props.fetchDishesAsync();
-        this.props.fetchComments();
-        this.props.fetchPromos();
-        this.props.fetchLeaders();
-    }
+    // componentDidMount() {
+    //     this.props.fetchDishesAsync();
+    //     this.props.fetchComments();
+    //     //this.props.fetchPromos();
+    //     this.props.fetchLeaders();
+    // }
 
     render() {
         const HomePage = () => {
@@ -65,13 +65,13 @@ class Main extends Component {
                     }
                     dishesLoading={this.props.dishes.isLoading}
                     dishesErrMess={this.props.dishes.err}
-                    promotion={
-                        this.props.promotions.promotions.filter(
-                            (promotion) => promotion.featured
-                        )[0]
-                    }
-                    promosLoading={this.props.promotions.isLoading}
-                    promosErrMess={this.props.promotions.err}
+                    // promotion={
+                    //     this.props.promotions.promotions.filter(
+                    //         (promotion) => promotion.featured
+                    //     )[0]
+                    // }
+                    // promosLoading={this.props.promotions.isLoading}
+                    // promosErrMess={this.props.promotions.err}
                     leader={
                         this.props.leaders.leaders.filter(
                             (leader) => leader.featured

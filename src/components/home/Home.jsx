@@ -46,63 +46,36 @@ function RenderCard({ item, isLoading, err }) {
 }
 
 function Home(props) {
-    const { isMessageRendered, 
-            onButtonClick,
-            numberOfClicks 
-    } = HomeViewStore();
-
     const {
-        dish,
-        dishesLoading,
-        dishesErrMess,
+        promotionsLoading,
         promotion,
-        promosLoading,
-        promosErrMess,
-        leader,
-        leadersLoading,
-        leadersErrMess,
-    } = props;
-
+        promotionsErrMessage,
+    } = HomeViewStore();
+    debugger;
     return (
         <div className="container">
-            <div>{isMessageRendered && <div>Button clicked!!</div>}</div>
-            <div className="row">
-                <div className="col 12">
-                    <Button color="primary" onClick={onButtonClick}>
-                        Button
-                    </Button>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col 12">
-                    <MyComponentTemplate
-                        defaultText={`default text - ${numberOfClicks}`}
-                        text={`other text - ${numberOfClicks}`}
-                    />
-                </div>
-            </div>
             <div className="row align-items-start">
-                <div className="col 12 col-md m-1">
+                {/* <div className="col 12 col-md m-1">
                     <RenderCard
                         item={dish}
                         isLoading={dishesLoading}
                         err={dishesErrMess}
                     />
-                </div>
-                <div className="col 12 col-md m-1">
+                </div> */}
+                {/* <div className="col 12 col-md m-1">
                     <RenderCard
                         item={promotion}
-                        isLoading={promosLoading}
-                        err={promosErrMess}
+                        isLoading={promotionsLoading}
+                        err={promotionsErrMessage}
                     />
-                </div>
-                <div className="col 12 col-md m-1">
+                </div> */}
+                {/* <div className="col 12 col-md m-1">
                     <RenderCard
                         item={leader}
                         isLoading={leadersLoading}
                         err={leadersErrMess}
                     />
-                </div>
+                </div> */}
             </div>
         </div>
     );
