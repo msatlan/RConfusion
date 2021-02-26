@@ -3,14 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchPromos } from 'redux/common';
 
 const HomeViewStore = () => {
-    const [query, setQuery] = useState('');
-    // const { promotionsLoading, promotionsErrMessage, promotions } = useSelector(
-    //     (state) => ({
-    //         promotionsLoading: state.promotions.promosLoading,
-    //         promotionsErrMessage: state.promotions.err,
-    //         promotions: state.promotions.promotions,
-    //     })
-    // );
+    const promotions = useSelector((state) => state.promotions);
     //let promotionsLoading = promotions.promosLoading;
     //let promotion = promotions.filter((promotion) => promotion.featured)[0];
     //let promotionsErrMessage = promotions.err;
@@ -26,12 +19,14 @@ const HomeViewStore = () => {
     // if effect needs to be used after every render - omit the 2nd param
     // if useEffect has a function in return statement that function will be called on unmount
     useEffect(() => {
+        debugger;
         dispatch(fetchPromos());
-    }, [query]);
+    }, []);
 
+    debugger;
     return {
         //promotionsLoading,
-        //promotion,
+        promotions,
         //promotionsErrMessage,
     };
 };

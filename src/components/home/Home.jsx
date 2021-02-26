@@ -46,11 +46,7 @@ function RenderCard({ item, isLoading, err }) {
 }
 
 function Home(props) {
-    const {
-        promotionsLoading,
-        promotion,
-        promotionsErrMessage,
-    } = HomeViewStore();
+    const { promotions } = HomeViewStore();
     debugger;
     return (
         <div className="container">
