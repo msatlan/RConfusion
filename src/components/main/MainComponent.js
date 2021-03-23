@@ -1,13 +1,7 @@
 import React from 'react';
 import { Header, Footer } from 'components';
 import { Menu, Contact, DishDetail, About, Home } from 'components';
-import {
-    Switch,
-    Route,
-    Redirect,
-    withRouter,
-    useLocation,
-} from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
     postComment,
@@ -110,19 +104,13 @@ function Main() {
         <div>
             <Header />
             <TransitionGroup>
-                <CSSTransition
-                    key={location.pathName}
-                    classNames={'page'}
-                    timeout={300}
-                >
+                <CSSTransition key={location.pathName} classNames={'page'} timeout={300}>
                     <Switch>
                         <Route path="/home" component={HomePage} />
                         <Route
                             exact
                             path="/menu"
-                            component={() => (
-                                <Menu dishes={this.props.dishes} />
-                            )}
+                            component={() => <Menu dishes={this.props.dishes} />}
                         />
                         <Route path="/menu/:dishId" component={DishWithId} />
                         <Route
@@ -130,9 +118,7 @@ function Main() {
                             path="/contactus"
                             component={() => (
                                 <Contact
-                                    resetFeedbackForm={
-                                        this.props.resetFeedbackForm
-                                    }
+                                    resetFeedbackForm={this.props.resetFeedbackForm}
                                     postFeedback={this.props.postFeedback}
                                 />
                             )}
@@ -140,9 +126,7 @@ function Main() {
                         <Route
                             exact
                             path="/aboutus"
-                            component={() => (
-                                <About leaders={this.props.leaders} />
-                            )}
+                            component={() => <About leaders={this.props.leaders} />}
                         />
                         <Redirect to="home" />
                     </Switch>

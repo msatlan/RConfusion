@@ -27,26 +27,32 @@ function RenderCard({ item, isLoading, err }) {
                     exitTransform: 'scale(0.5) translateY(-50%)',
                 }}
             >
-                <Card>
-                    <CardImg
-                        src={baseUrl + item.image}
-                        alt={item.name}
-                    ></CardImg>
-                    <CardBody>
-                        <CardTitle>{item.name}</CardTitle>
-                        {item.designation ? (
-                            <CardSubtitle>{item.designation}</CardSubtitle>
-                        ) : null}
-                        <CardText>{item.description}</CardText>
-                    </CardBody>
-                </Card>
+                {item && (
+                    <Card>
+                        <CardImg
+                            src={baseUrl + item.image}
+                            alt={item.name}
+                        ></CardImg>
+                        <CardBody>
+                            <CardTitle>{item.name}</CardTitle>
+                            {item.designation ? (
+                                <CardSubtitle>{item.designation}</CardSubtitle>
+                            ) : null}
+                            <CardText>{item.description}</CardText>
+                        </CardBody>
+                    </Card>
+                )}
             </FadeTransform>
         );
     }
 }
 
 function Home(props) {
-    const { promotions } = HomeViewStore();
+    const {
+        promotion,
+        promotionsLoading,
+        promotionsErrMessage,
+    } = HomeViewStore();
     debugger;
     return (
         <div className="container">
@@ -58,13 +64,13 @@ function Home(props) {
                         err={dishesErrMess}
                     />
                 </div> */}
-                {/* <div className="col 12 col-md m-1">
+                <div className="col 12 col-md m-1">
                     <RenderCard
                         item={promotion}
                         isLoading={promotionsLoading}
                         err={promotionsErrMessage}
                     />
-                </div> */}
+                </div>
                 {/* <div className="col 12 col-md m-1">
                     <RenderCard
                         item={leader}

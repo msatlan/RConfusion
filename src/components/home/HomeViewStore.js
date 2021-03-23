@@ -3,14 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchPromos } from 'redux/common';
 
 const HomeViewStore = () => {
-    const promotions = useSelector((state) => state.promotions);
-    //let promotionsLoading = promotions.promosLoading;
-    //let promotion = promotions.filter((promotion) => promotion.featured)[0];
-    //let promotionsErrMessage = promotions.err;
-    //const [_promotions] = useState(promotions.promotions);
-
     const dispatch = useDispatch();
 
+    const promotions = useSelector((state) => state.promotions.promotions);
+    const promotionsLoading = useSelector((state) => state.promotions.isLoading);
+    const promotionsErrMessage = useSelector((state) => state.promotions.err);
+
+    const [promotion, setPromotion] = useState({});
     // runs after every render
     // 1st parameter - function that gets called after render/rerender
     // 2nd parameter - dependency array - declare on what state or props change you want to trigger the effect
@@ -23,11 +22,20 @@ const HomeViewStore = () => {
         dispatch(fetchPromos());
     }, []);
 
-    debugger;
+    useEffect(() => {
+        debugger;
+        if (promotions && promotions.length > 0) {
+            setPromotion(() => {
+                debugger;
+                return promotions.filter((promotion) => promotion.featured)[0];
+            });
+        }
+    }, [promotions]);
+
     return {
-        //promotionsLoading,
-        promotions,
-        //promotionsErrMessage,
+        promotionsLoading,
+        promotion,
+        promotionsErrMessage,
     };
 };
 
