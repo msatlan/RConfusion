@@ -1,5 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Refactor to use ReactHooks in progress (hooksRefactor branch):
+- Home page refactored
+
 ## Available Scripts
 
 In the project directory, you can run:
