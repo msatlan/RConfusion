@@ -1,18 +1,9 @@
 import React from 'react';
-import {
-    Card,
-    CardImg,
-    CardText,
-    CardBody,
-    CardTitle,
-    CardSubtitle,
-    Button,
-} from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
 import { Loading } from 'components';
 import { baseUrl } from 'common';
 import { FadeTransform } from 'react-animation-components';
 import HomeViewStore from './HomeViewStore';
-import { MyComponentTemplate } from 'components/core/myComponent';
 
 function RenderCard({ item, isLoading, err }) {
     if (isLoading) {
@@ -29,10 +20,7 @@ function RenderCard({ item, isLoading, err }) {
             >
                 {item && (
                     <Card>
-                        <CardImg
-                            src={baseUrl + item.image}
-                            alt={item.name}
-                        ></CardImg>
+                        <CardImg src={baseUrl + item.image} alt={item.name}></CardImg>
                         <CardBody>
                             <CardTitle>{item.name}</CardTitle>
                             {item.designation ? (
@@ -47,23 +35,24 @@ function RenderCard({ item, isLoading, err }) {
     }
 }
 
-function Home(props) {
+function Home() {
     const {
+        dish,
+        dishesLoading,
+        dishesErrMess,
         promotion,
         promotionsLoading,
         promotionsErrMessage,
+        leader,
+        leadersLoading,
+        leadersErrMess,
     } = HomeViewStore();
-    debugger;
     return (
         <div className="container">
             <div className="row align-items-start">
-                {/* <div className="col 12 col-md m-1">
-                    <RenderCard
-                        item={dish}
-                        isLoading={dishesLoading}
-                        err={dishesErrMess}
-                    />
-                </div> */}
+                <div className="col 12 col-md m-1">
+                    <RenderCard item={dish} isLoading={dishesLoading} err={dishesErrMess} />
+                </div>
                 <div className="col 12 col-md m-1">
                     <RenderCard
                         item={promotion}
@@ -71,13 +60,9 @@ function Home(props) {
                         err={promotionsErrMessage}
                     />
                 </div>
-                {/* <div className="col 12 col-md m-1">
-                    <RenderCard
-                        item={leader}
-                        isLoading={leadersLoading}
-                        err={leadersErrMess}
-                    />
-                </div> */}
+                <div className="col 12 col-md m-1">
+                    <RenderCard item={leader} isLoading={leadersLoading} err={leadersErrMess} />
+                </div>
             </div>
         </div>
     );

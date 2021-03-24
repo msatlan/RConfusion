@@ -55,32 +55,6 @@ function Main() {
     //     this.props.fetchLeaders();
     // }
 
-    const HomePage = () => {
-        return (
-            <Home
-            // dish={
-            //     this.props.dishes.dishes.filter((dish) => dish.featured)[0]
-            // }
-            // dishesLoading={this.props.dishes.isLoading}
-            // dishesErrMess={this.props.dishes.err}
-            // promotion={
-            //     this.props.promotions.promotions.filter(
-            //         (promotion) => promotion.featured
-            //     )[0]
-            // }
-            // promosLoading={this.props.promotions.isLoading}
-            // promosErrMess={this.props.promotions.err}
-            // leader={
-            //     this.props.leaders.leaders.filter(
-            //         (leader) => leader.featured
-            //     )[0]
-            // }
-            // leadersLoading={this.props.leaders.isLoading}
-            // leadersErrMess={this.props.leaders.err}
-            />
-        );
-    };
-
     const DishWithId = ({ match }) => {
         return (
             <DishDetail
@@ -106,7 +80,7 @@ function Main() {
             <TransitionGroup>
                 <CSSTransition key={location.pathName} classNames={'page'} timeout={300}>
                     <Switch>
-                        <Route path="/home" component={HomePage} />
+                        <Route path="/home" component={() => <Home />} />
                         <Route
                             exact
                             path="/menu"

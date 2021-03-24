@@ -29,9 +29,7 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
                 if (response.ok) {
                     return response;
                 } else {
-                    let error = new Error(
-                        'Error ' + response.status + ': ' + response.statusText
-                    );
+                    let error = new Error('Error ' + response.status + ': ' + response.statusText);
                     error.response = response;
                     throw error;
                 }
@@ -81,9 +79,7 @@ export const fetchComments = () => (dispatch) => {
                 if (response.ok) {
                     return response;
                 } else {
-                    let error = new Error(
-                        'Error ' + response.status + ': ' + response.statusText
-                    );
+                    let error = new Error('Error ' + response.status + ': ' + response.statusText);
                     error.response = response;
                     throw error;
                 }
@@ -122,30 +118,15 @@ export const addPromos = (promos) => ({
     payload: promos,
 });
 
-export const fetchPromos = () => (dispatch) => {
-    debugger;
+export const fetchPromosAsync = () => async (dispatch) => {
     dispatch(promosLoading(true));
-    return fetch(baseUrl + 'promotions')
-        .then(
-            (response) => {
-                if (response.ok) {
-                    return response;
-                } else {
-                    let error = new Error(
-                        'Error ' + response.status + ': ' + response.statusText
-                    );
-                    error.response = response;
-                    throw error;
-                }
-            },
-            (error) => {
-                let err = new Error(error.message);
-                throw err;
-            }
-        )
-        .then((response) => response.json())
-        .then((promos) => dispatch(addPromos(promos)))
-        .catch((error) => dispatch(promosFailed(error.message)));
+
+    try {
+        let response = await axios.get(baseUrl + 'promotions');
+        dispatch(addPromos(response.data));
+    } catch (error) {
+        dispatch(dishesFailed(error.message));
+    }
 };
 
 export const leadersLoading = () => ({
@@ -162,30 +143,15 @@ export const addLeaders = (leaders) => ({
     payload: leaders,
 });
 
-export const fetchLeaders = () => (dispatch) => {
+export const fetchLeadersAsync = () => async (dispatch) => {
     dispatch(leadersLoading(true));
 
-    return fetch(baseUrl + 'leaders')
-        .then(
-            (response) => {
-                if (response.ok) {
-                    return response;
-                } else {
-                    let error = new Error(
-                        'Error' + response.status + ': ' + response.statusText
-                    );
-                    error.response = response;
-                    throw error;
-                }
-            },
-            (error) => {
-                let err = new Error(error.message);
-                throw err;
-            }
-        )
-        .then((response) => response.json())
-        .then((leaders) => dispatch(addLeaders(leaders)))
-        .catch((error) => dispatch(leadersFailed(error.message)));
+    try {
+        let response = await axios.get(baseUrl + 'leaders');
+        dispatch(addLeaders(response.data));
+    } catch (error) {
+        dispatch(leadersFailed(error.message));
+    }
 };
 
 export const postFeedback = (feedback) => (dispatch) => {
@@ -207,9 +173,7 @@ export const postFeedback = (feedback) => (dispatch) => {
                 if (response.ok) {
                     return response;
                 } else {
-                    let error = new Error(
-                        'Error ' + response.status + ': ' + response.statusText
-                    );
+                    let error = new Error('Error ' + response.status + ': ' + response.statusText);
                     error.response = response;
                     throw error;
                 }
